@@ -76,7 +76,7 @@ const setupSocket = (server) => {
                 console.log(` ${socket.user.userEmail} is already in room: ${roomId}`);
             }
 
-            const messages = await Message.find({ room: roomId, isDeleted: false })
+            const messages = await Message.find({ room: roomId })
                 .sort({ timestamp: -1 })
                 .limit(50)
                 .populate("sender", "email");
