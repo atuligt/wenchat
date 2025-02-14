@@ -174,7 +174,7 @@ const setupSocket = (server) => {
                 await message.save();
                 console.log(`Message deleted: ${messageId}`);
                 console.log("message Id", message.room.toString())
-                io.to(message.room).emit("messageDeleted", {
+                io.to(message.room.toString()).emit("messageDeleted", {
                     user: socket.user.userEmail,
                     message: "message deleted successfully!",
                     messageId
