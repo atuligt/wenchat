@@ -82,6 +82,7 @@ const setupSocket = (server) => {
                 .populate("sender", "email");
 
             socket.join(roomId);
+            
             console.log(` User ${socket.user.userEmail} joined room: ${roomId}`);
 
             socket.to(roomId).emit("userJoined", { userId: socket.id });
