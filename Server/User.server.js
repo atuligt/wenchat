@@ -5,10 +5,11 @@ const jwt=require('../Utils/JsonWebToken')
 const RegisterUser = async (req, res) => {
     try {
         const { name, email, password } = req.body
+        const em=email.toLowerCase();
         if (!name || !email || !password) {
             return res.status(400).json({ message: "Please fill all the fields" })
         }
-        const isEmailExists = await User.findOne({ email })
+        const isEmailExists = await User.findOne({ email:em })
         if (isEmailExists) {
             return res.status(400).json({ message: "User already exists" })
         } else {
